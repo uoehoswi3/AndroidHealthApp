@@ -27,7 +27,7 @@
         android:layout_marginTop="112dp"
         android:layout_marginEnd="186dp"
         android:gravity="center|center_vertical"
-        android:text="이름"
+        android:hint="이름"
         android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
