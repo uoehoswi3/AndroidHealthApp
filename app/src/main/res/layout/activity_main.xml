@@ -6,13 +6,113 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="20dp"
+        android:text="선택"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_q2" />
+
+    <RadioGroup
+        android:id="@+id/rg_q1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_q1">
+
+        <RadioButton
+            android:id="@+id/q1_a3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="항상 느꼈다 (3)" />
+
+        <RadioButton
+            android:id="@+id/q1_a2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="자주 느꼈다 (2)" />
+
+        <RadioButton
+            android:id="@+id/q1_a1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="가끔 느꼈다 (1)" />
+
+        <RadioButton
+            android:id="@+id/q1_a0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="전혀 없었다 (0)" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_q1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="33dp"
+        android:text="1. 매우 긴장하거나 불안한 상태가 되었다."
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/rg_q2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_q">
+
+        <RadioButton
+            android:id="@+id/q2_a3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="항상 느꼈다 (3)" />
+
+        <RadioButton
+            android:id="@+id/q2_a2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="자주 느꼈다 (2)" />
+
+        <RadioButton
+            android:id="@+id/q2_a1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="가끔 느꼈다 (1)" />
+
+        <RadioButton
+            android:id="@+id/q2_a0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="전혀 없었다 (0)" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_q"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="40dp"
+        android:text="2. 사소한 일에 매우 신경질적이 되었다."
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_q1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
