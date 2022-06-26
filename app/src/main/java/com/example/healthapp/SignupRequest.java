@@ -10,7 +10,7 @@ import java.util.Map;
 public class SignupRequest extends StringRequest {
 
     // 서버 URL 설정 ( PHP 파일 연동 )
-    final static private String URL = "http://자신의주소IP/Register.php";
+    final static private String URL = "http://주소/Register.php";
     private Map<String, String> map;
 
 

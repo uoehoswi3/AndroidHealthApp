@@ -32,7 +32,7 @@ public class SignupActivity extends AppCompatActivity {
         et_age = findViewById(R.id.et_age);
 
         // 회원가입 버튼 클릭 시 수행
-        btn_signup = findViewById(R.id.btn_signup);
+        btn_signup = findViewById(R.id.btn_login);
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
