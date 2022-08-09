@@ -3,13 +3,29 @@ package com.example.healthapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.io.IOException;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class MainActivity extends AppCompatActivity {
+
+    private final String TAG = "MainActivityLog";
+    private final String URL = "http://192.168.0.174:3000";
+
+    private Retrofit retrofit;
+    private ApiService service;
 
     RadioGroup RadioGroup1, RadioGroup2;
     RadioButton RB13, RB12, RB11, RB10, RB23, RB22, RB21, RB20;
@@ -34,6 +50,16 @@ public class MainActivity extends AppCompatActivity {
         RB22 = findViewById(R.id.q2_a2);
         RB21 = findViewById(R.id.q2_a1);
         RB20 = findViewById(R.id.q2_a0);
+
+        /**
+         * Init
+         */
+        retrofit = new Retrofit.Builder()
+                    .baseUrl(URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        service = retrofit.create(ApiService.class);
+
 
         RadioGroup1.setOnCheckedChangeListener((RadioGroup1, i) -> {
             if(RB13.isChecked())
@@ -63,6 +89,32 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String resulttext=Integer.toString(result);;
                 Toast.makeText(getApplicationContext(), "최종 점수는 "+resulttext+"점", Toast.LENGTH_SHORT).show();
+
+                //여기부터 수정
+                Call<ResponseBody> call_post = service.postFunc("post data");
+                call_post.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+                            try {
+                                String result = response.body().string();
+                                Log.v(TAG, "result = " + result);
+                                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Log.v(TAG, "error = " + String.valueOf(response.code()));
+                            Toast.makeText(getApplicationContext(), "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        Log.v(TAG, "Fail");
+                        Toast.makeText(getApplicationContext(), "Response Fail", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }
